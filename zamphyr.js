@@ -12,7 +12,7 @@ if (Meteor.isClient) {
     }
 } else {
     Accounts.addAutopublishFields({
-        forLoggedInUser: ['services.slack'],
-        forOtherUsers: ['services.slack.id']
+        forLoggedInUser: ['services.zamphyr'],
+        forOtherUsers: ['services.zamphyr.id']
     })
 }
