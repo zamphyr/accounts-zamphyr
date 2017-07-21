@@ -1,6 +1,6 @@
 Package.describe({
     summary: 'Login service for Zamphyr accounts',
-    version: '0.0.3',
+    version: '0.0.5',
     git: 'https://github.com/zamphyr/accounts-zamphyr.git',
     name: 'zamphyr:accounts-zamphyr'
 })

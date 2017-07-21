@@ -17,7 +17,7 @@ OAuth.registerService('zamphyr', 2, null, (query) => {
                 country: identity.country,
                 city: identity.city,
                 picture: identity.picture,
-                language: identity.language
+                language: identity.language || 'en'
             },
             zamphyr: {
                 tokens: tokens,
@@ -28,7 +28,7 @@ OAuth.registerService('zamphyr', 2, null, (query) => {
 })
 
 const getTokens = (query) => {
-    let config = ServiceConfiguration.configurations.findOne({
+    var config = ServiceConfiguration.configurations.findOne({
         service: 'zamphyr'
     })
 
@@ -36,14 +36,14 @@ const getTokens = (query) => {
         throw new ServiceConfiguration.ConfigError()
     }
 
-    let response
+    var response
     try {
-        response = HTTP.post('https://id.zamphyr.com/oauth/authorize', {
+        response = HTTP.post('https://id.zamphyr.com/oauth/token', {
             headers: {
               Accept: 'application/json'
             },
             params: {
-              code: query.code,
+              code: query['close?code'],
               client_id: config.clientId,
               client_secret: OAuth.openSecret(config.secret),
               redirect_uri: OAuth._redirectUri('zamphyr', config),
@@ -57,22 +57,18 @@ const getTokens = (query) => {
         })
     }
 
-    if (!response.data.ok) {
-        throw new Error(`Failed to complete OAuth handshake with Slack. ${response.data.error}`)
-    } else {
-        return response.data;
-    }
+    return response.data
 }
 
 const getIdentity = (accessToken) => {
     try {
-        let response = HTTP.get('https://zamphyr.com/api/me', {params: {
+        var response = HTTP.get('https://zamphyr.com/api/me', {params: {
             access_token: accessToken
         }})
 
-        return response.data.ok && response.data
+        return response.data.data
     } catch (err) {
-        throw _.extend(new Error(`Failed to fetch identity from Slack. ${err.message}`), {
+        throw _.extend(new Error(`Failed to fetch identity from Zamphyr. ${err.message}`), {
             response: err.response
         })
     }

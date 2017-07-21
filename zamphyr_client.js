@@ -23,7 +23,7 @@ Zamphyr.requestCredential = (options, credentialRequestCompleteCallback) => {
     var credentialToken = Random.id()
 
     var scope = (options && options.requestPermissions) || []
-    var flatScope = _.map(scope, encodeURIComponent).join(',') || 'identify'
+    var flatScope = _.map(scope, encodeURIComponent).join(',') || 'all'
 
     var loginStyle = OAuth._loginStyle('zamphyr', config, options)
 
@@ -36,6 +36,6 @@ Zamphyr.requestCredential = (options, credentialRequestCompleteCallback) => {
         loginUrl: loginUrl,
         credentialRequestCompleteCallback: credentialRequestCompleteCallback,
         credentialToken: credentialToken,
-        popupOptions: {width: 900, height: 620}
+        popupOptions: {width: 600, height: 620}
     })
 }

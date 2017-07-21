@@ -7,7 +7,7 @@ if (Meteor.isClient) {
             options = null
         }
 
-        let credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback)
+        var credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback)
         Zamphyr.requestCredential(options, credentialRequestCompleteCallback)
     }
 } else {
