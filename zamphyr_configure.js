@@ -1,5 +1,5 @@
 Template.configureLoginServiceDialogForZamphyr.siteUrl = () => {
-	return `${Meteor.absoluteUrl()}/_oauth/zamphyr?close`
+	return `${Meteor.absoluteUrl()}/_oauth/zamphyr`
 }
 
 Template.configureLoginServiceDialogForZamphyr.fields = () => {

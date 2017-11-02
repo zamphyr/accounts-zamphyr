@@ -37,13 +37,14 @@ const getTokens = (query) => {
     }
 
     var response
+
     try {
         response = HTTP.post('https://id.zamphyr.com/oauth/token', {
             headers: {
               Accept: 'application/json'
             },
             params: {
-              code: query['close?code'],
+              code: query['code'],
               client_id: config.clientId,
               client_secret: OAuth.openSecret(config.secret),
               redirect_uri: OAuth._redirectUri('zamphyr', config),
@@ -62,7 +63,7 @@ const getTokens = (query) => {
 
 const getIdentity = (accessToken) => {
     try {
-        var response = HTTP.get('https://zamphyr.com/api/me', {params: {
+        var response = HTTP.get('https://api.zamphyr.com/me', {params: {
             access_token: accessToken
         }})
 
