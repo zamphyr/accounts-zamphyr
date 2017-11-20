@@ -44,7 +44,7 @@ const getTokens = (query) => {
               Accept: 'application/json'
             },
             params: {
-              code: query['code'],
+              code: query['code'] || query['close?code'],
               client_id: config.clientId,
               client_secret: OAuth.openSecret(config.secret),
               redirect_uri: OAuth._redirectUri('zamphyr', config),
