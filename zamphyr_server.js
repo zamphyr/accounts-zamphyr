@@ -39,7 +39,7 @@ const getTokens = (query) => {
     var response
 
     try {
-        response = HTTP.post('https://id.zamphyr.com/oauth/token', {
+        response = HTTP.post('https://id.zamphyr.tk/oauth/token', {
             headers: {
               Accept: 'application/json'
             },

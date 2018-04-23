@@ -27,7 +27,7 @@ Zamphyr.requestCredential = (options, credentialRequestCompleteCallback) => {
 
     var loginStyle = OAuth._loginStyle('zamphyr', config, options)
 
-    var loginUrl = `https://id.zamphyr.com/oauth/authorize?client_id=${config.clientId}&response_type=code&scope=${flatScope}&redirect_uri=${OAuth._redirectUri('zamphyr', config)}&state=${OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl)}`
+    var loginUrl = `https://id.zamphyr.tk/oauth/authorize?client_id=${config.clientId}&response_type=code&scope=${flatScope}&redirect_uri=${OAuth._redirectUri('zamphyr', config)}&state=${OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl)}`
 
 
     OAuth.launchLogin({

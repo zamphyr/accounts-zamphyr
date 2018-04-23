@@ -23,3 +23,16 @@ Package.on_use(function(api) {
 
     api.add_files('zamphyr.js')
 })
+
+Package.onTest(function(api) {
+    api.use('zamphyr:accounts-zamphyr')
+
+    api.use(['ecmascript', 'meteortesting:mocha', 'http'])
+
+    Npm.depends({
+        "chai": "4.1.2"
+    })
+
+    api.mainModule('tests/index.js')
+})
+
